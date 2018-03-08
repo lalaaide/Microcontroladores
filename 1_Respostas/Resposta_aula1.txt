@@ -1,8 +1,33 @@
-1. O que s�o sistemas embarcados?
-2. O que s�o sistemas microprocessados?
-3. Apresente aplica��es de sistemas embarcados:
-	a) Para industria automotiva;
-	b) Para eletrodom�sticos;
-	c) Para automa��o industrial.
-4. Cite arquiteturas possiveis e as diferen�as entre elas.
-5. Por que usamos o MSP430 na disciplina, ao inv�s de outro microcontrolador?
+1. O que são sistemas embarcados?
+2. O que são sistemas microprocessados?
+3. Apresente aplicações de sistemas embarcados:
+	a) Para indústria automotiva;
+	b) Para eletrodomésticos;
+	c) Para automação industrial.
+4. Cite arquiteturas possíveis e as diferenças entre elas.
+5. Por que usamos o MSP430 na disciplina, ao invés de outro microcontrolador?
+
+RESPOSTAS
+R1) Um sistema embarcado é um sistema microprocessado no qual o computador é completamente encapsulado ou dedicado ao dispositivo ou sistema que ele controla. Diferente de computadores de propósito geral, como o computador pessoal, um sistema embarcado realiza um conjunto de tarefas predefinidas, geralmente com requisitos específicos.
+R2) Um sistema microprocessado é um sistema que contém um processador que irá utilizar dos seus recursos lógicos e aritméticos para executar um conjunto de tarefas, ou seja, para executar um programa.
+R3) (A) Certamente uma das maiores e mais interessantes aplicações de sistemas embarcados se encontra na indústria automotiva. Nesse setor as montadoras investem milhões de dólares afim de equipar seus veículos com o que há de mais moderno em sistemas eletrônicos, tanto de conforto e navegação quanto de segurança.
+Entre os diversos dispositivos automotivos, destacamos: 
+•	Redes de comunicação embarcada como CAN e LIN;
+•	Sistemas de GPS e navegação;
+•	Controle de motor e injeção eletrônica;
+•	Alarmes;
+•	Controle de transmissão e carroceria;
+•	Sistemas em tempo real como Freios ABS e Air Bag;
+•	Controle de tração;
+•	Sistemas de entretenimento;
+•	Painel de instrumentos;
+(B) Atualmente, vários produtos possuem uma capacidade computacional bastante eficaz, e que estão presentes no nosso dia-a-dia. Eletrodomésticos, por exemplo, contam com sistemas eficazes para garantir um maior conforto e praticidade aos usuários. 
+
+Entre os eletrodomésticos, destacamos: 
+
+•	Controladores eletrônicos de eletrodomésticos, como fornos microondas, máquinas de lavar e também dos refrigeradores e aparelhos de ar condicionado mais modernos;
+•	Aparelhos de TV com controle remoto, CD players, DVD players e Blue-Ray Disc players;
+•	Videogames;
+•	Receptores de TV por satélite e de TV por cabo coaxial;
+•	Televisores digitais com telas a LCD ou plasma e monitores de computador de LCD;
+(C) 

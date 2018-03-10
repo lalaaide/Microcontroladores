@@ -1,3 +1,36 @@
-Respostas aula 2
+1.	Quais as diferenças entre os barramentos de dados e de endereços?
+2.	Quais são as diferenças entre as memórias RAM e ROM?
+3.	Considere o código abaixo:
+#include <stdio.h>
+int main(void)
+{
+	int i;
+	printf("Insira um número inteiro: ");
+	scanf("%d", &i);
+	if(i%2)
+		printf("%d eh impar.\n");
+	else
+		printf("%d eh par.\n");
+	return 0;
+}
+Para este código, responda: (a) A variável i é armazenada na memória RAM ou ROM? Por quê? (b) O programa compilado a partir deste código é armazenado na memória RAM ou ROM? Por quê?
+4.	Quais são as diferenças, vantagens e desvantagens das arquiteturas Harvard e Von Neumann?
+5.	Considere a variável inteira i, armazenando o valor 0x8051ABCD. Se i é armazenada na memória a partir do endereço 0x0200, como ficam este byte e os seguintes, considerando que a memória é: (a) Little-endian; (b) Big-endian.
+6.	Sabendo que o processador do MSP430 tem registradores de 16 bits, como ele soma duas variáveis de 32 bits?
+RESPOSTAS
+R1) O Barramento de Dados (Data Bus): transmite dados entre as unidades. Portanto, um microprocessador de 8 bits requer um barramento de dados de 8 linhas para transmitir dados de 8 bits em paralelo. 
+O Barramento de Endereço (Address Bus): é usado para selecionar a origem ou destino de sinais transmitidos num dos outros barramentos ou numa de suas linhas. Ele conduz endereços. 
 
-1.
+R2) A memória RAM é um tipo de memória volátil que serve para rodar aplicações depois que o computador já está ligado, e cujas informações são perdidas depois do desligamento da máquina. Já a memória ROM é algo completamente diferente, pois se refere a um tipo de memória quase permanente.
+RAM é a sigla para Random Access Memory, ou Memória de Acesso Randômico, e que pode ser acessada a qualquer momento pelo sistema operacional para carregar e sobrescrever informações com muita rapidez (volátil).
+Usamos a memória RAM para guardar dados temporariamente, como os programas que estão em execução na máquina. Mas por causa da volatilidade da RAM, não podemos usá-la para armazenar arquivos importantes, que gostaríamos de acessar frequentemente, já que o conteúdo da memória é esvaziado cada vez que o computador é desligado.
+ROM significa Read-Only Memory, ou Memória Somente de Leitura, e está principalmente localizada no chip responsável pela iniciação do sistema – é lá que as informações básicas do computador ficam armazenadas, portanto não são afetadas quando o dispositivo é desligado (Não volátil).
+
+R3) (A) A variável ‘i’ fica armazenada na memória RAM, pois é lá que o que fica os dados temporários de acesso rápido.
+(B) Já o programa compilado depende de onde ele está sendo executado, se ele estiver sendo executado em um computador estamos falando tratando de uma memória RAM, já se for um microcontrolador que precise desse programa para executar uma tarefa a qual ele foi projetado para sempre fazer, ele estará na memória ROM do mesmo, já que o programa não poderá ser perdido quando o hardware for desligado.
+
+R4) A Arquitetura de Harvard baseia-se na separação de barramentos de dados das memórias onde estão as instruções de programa e das memórias de dados, permitindo que um processador possa acessar as duas simultaneamente, obtendo um desempenho melhor do que a da Arquitetura de von Neumann, pois pode buscar uma nova instrução enquanto executa outra. Arquitetura mais complexa, geralmente RISC e permite pipelining. 
+      A Arquitetura de Von Neumann é uma arquitetura mais simples, porém mais lenta que arquitetura de Harvard pois não permite acesso simultâneo das memorias. Geralmente arquitetura CISC.
+
+ 
+

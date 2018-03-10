@@ -32,5 +32,14 @@ R3) (A) A variável ‘i’ fica armazenada na memória RAM, pois é lá que o q
 R4) A Arquitetura de Harvard baseia-se na separação de barramentos de dados das memórias onde estão as instruções de programa e das memórias de dados, permitindo que um processador possa acessar as duas simultaneamente, obtendo um desempenho melhor do que a da Arquitetura de von Neumann, pois pode buscar uma nova instrução enquanto executa outra. Arquitetura mais complexa, geralmente RISC e permite pipelining. 
       A Arquitetura de Von Neumann é uma arquitetura mais simples, porém mais lenta que arquitetura de Harvard pois não permite acesso simultâneo das memorias. Geralmente arquitetura CISC.
 
- 
+R5) (A)	0x0200= CD
+	0x0201= AB
+	0x0202= 51
+	0x0203= 80
 
+    (B)	0x0200= 80
+	0x0201= 51
+	0x0202= AB
+	0x0203= CD
+	
+R6) Em assembly é só somar os 16 bits menos significativos dos 2 vetores e depois fazer uma soma com carry dos outros 16 bits mais significativo dos 2 vetores. 

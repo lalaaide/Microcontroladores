@@ -1,0 +1,140 @@
+1. Dada uma variável `a` do tipo `char` (um byte), escreva os trechos de código em C para:
+	(a) Somente setar o bit menos significativo de `a`.
+	(b) Somente setar dois bits de `a`: o menos significativo e o segundo menos significativo.
+	(c) Somente zerar o terceiro bit menos significativo de `a`.
+	(d) Somente zerar o terceiro e o quarto bits menos significativo de `a`.
+	(e) Somente inverter o bit mais significativo de `a`.
+	(f) Inverter o nibble mais significativo de `a`, e setar o nibble menos significativo de `a`. 
+
+2. Considerando a placa Launchpad do MSP430, escreva o código em C para piscar os dois LEDs ininterruptamente.
+
+3. Considerando a placa Launchpad do MSP430, escreva o código em C para piscar duas vezes os dois LEDs sempre que o usuário pressionar o botão.
+
+4. Considerando a placa Launchpad do MSP430, faça uma função em C que pisca os dois LEDs uma vez.
+
+5. Reescreva o código da questão 2 usando a função da questão 4.
+
+6. Reescreva o código da questão 3 usando a função da questão 4.
+
+Operators	Meaning of operators
+&	Bitwise AND
+|	Bitwise OR
+^	Bitwise XOR
+~	Bitwise complement
+<<	Shift left
+>>	Shift right
+
+R1)
+(a) a |= BIT0;             // a = a7...a2a1a0 OR 00000001
+(b) a |= BIT1 + BIT0;      // a = a7...a2a1a0 OR 00000011 
+(c) a &= ~BIT2;            // a = a7...a3a2a1a0 AND 11111011
+(d) a &= ~(BIT3 + BIT2);   // a = a7...a3a2a1a0 AND 11110011
+(e) a ^= BIT7;		   // a = a7...a2a1a0 XOR 10000000
+(f) a ^= (BIT7 + BIT6 + BIT5 + BIT4);
+    a |= (BIT3 + BIT2 + BIT1 + BIT0);
+
+R2) 
+// PISCA LED
+#include <msp430g2553.h>
+#define LED0 BIT0
+#define LED1 BIT1
+void main(void)
+{
+WDTCTL =WDTPW | WDTHOLD;
+PIOUT = 0;
+PIDIR = LED0 + LED1; 
+for(;;)
+{
+PIOUT = LED0 + LED1; // Liga os LED's
+PIOUT = BIT1; // Desliga os LED's
+}
+
+R3)
+// PISCA LED 2X
+// QUANDO BOTÃO FOR APERTADO
+#include <msp430g2553.h>
+#define BT BIT2
+#define LED1 BIT0
+#define LED2 BIT1
+
+void main (void)
+{
+	WDTCTL = WDTPW | WDTHOLD;
+	PIOUT = 0;
+	PIDIR = LED1 + LED2;
+	for(;;)
+	{
+	    if(PIIN & BTN == 0)
+	    {
+		PIOUT |= LED1 + LED2;
+		PIOUT  = 0;
+		PIOUT |= LED1 + LED2;
+		PIOUT  = 0;
+	    }
+	    else
+		PIOUT = 0;
+
+	}
+}
+
+R4)
+#include <msp430g2553.h>
+#define LED1 BIT0
+#define LED2 BIT1
+
+void pisca_led ()
+{
+    PIDIR = LED0 + LED1; 
+    PIOUT = LED0 + LED1; // Liga os LED's
+    PIOUT = 0;
+}
+
+R5)
+#include <msp430g2553.h>
+#define LED1 BIT0
+#define LED2 BIT1
+
+void pisca_led()
+{
+    PIDIR = LED0 + LED1; 
+    PIOUT = LED0 + LED1; // Liga os LED's
+    PIOUT = 0;
+}
+
+
+void main (void)
+{
+	WDTCTL = WDTPW | WDTHOLD;
+	PIOUT = 0;
+	for(;;)
+	{   
+	    pisca_led()
+	}
+}
+
+R6)
+#include <msp430g2553.h>
+#define LED1 BIT0
+#define LED2 BIT1
+
+void pisca_led()
+{
+    PIDIR = LED0 + LED1; 
+    PIOUT = LED0 + LED1; // Liga os LED's
+    PIOUT = 0;
+}
+
+void main (void)
+{
+	WDTCTL = WDTPW | WDTHOLD;
+	PIOUT = 0;
+	PIDIR = LED1 + LED2;
+	for(;;)
+	{
+	    if(PIIN & BTN == 0)
+	    {
+		Acende_led();
+		Acende_led();
+	    }
+	    else
+		PIOUT = 0;

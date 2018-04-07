@@ -51,15 +51,8 @@ Na automação industrial, destacamos.
 •	Robótica Industrial;
 •	Acionamentos Elétricos (Soft-Start, Inversor de Frequência e Servoacionamentos).
 
-R4)  Computadores completos: Os computadores completos tem hardware e software facilmente disponíveis, tem múltiplas funcionalidades e uma boa comunicação com outras dispositivos eletrônicos como impressora, leitores de código de barra e etc.
-         ASICs: Os circuitos integrados para uma aplicação específica ou ASIC são normalmente projetados e usados para um sistema específico. Eles são muito caros, demandam muito tempo de desenvolvimento e muitos recursos. Em contra partida oferecerem um altíssimo desempenho aliado a um baixo consumo de energia.
-          FPGA: O grande diferencial de um FPGA é a capacidade de configurarmos seu hardware para desempenhar qualquer combinação de funções digitais que desejarmos. Também podemos implementar algoritmos de forma paralela, o que significa que podemos processar uma enorme quantidade de dados de forma rápida e eficiente.
-         Microcontroladores: Os projetos com microcontroladores em geral dispensam diversos outros componentes, reduzindo o custo final, os microcontroladores são na verdade um grande circuito dentro de um único chip. Essa característica permite a confecção de placas com pouquíssimos componentes de apoio ao microcontrolador, são reconfiguráveis e mais baratos que FPGA’s.
-
-Arquitetura RISC vs CISC:
-
-RISC: visam Unidades de Controle mais simples, rápidas e baratas, elas geralmente optam por instruções mais simples possível, é mais fácil para a Unidade de Controle prever quantos ciclos serão necessários para executa-las. Esta previsibilidade traz benefícios diretos para o ganho de desempenho com o Pipeline. 
-CISC:  É uma linha de arquitetura de processadores capaz de executar centenas de instruções complexas diferentes sendo, assim, extremamente versátil, porém mais complexa que arquitetura RISC.
+R4) Arquitetura Von-Neumann: as intruções e os dados ficam juntos na memória.
+Arquitetura Harvard: dados e programas são armazenados em meios distintos.
 
 R5) MSP430: É um kit que permite programar e realizar o debug na série de microcontroladores MSP430 da Texas através da interface USB. Essa plaquinha possui muitos dos recursos de hardware necessários para um iniciante se aventurar na área da computação embarcada. Essa linha de microcontroladores é conhecida pelo seu baixíssimo consumo elétrico (230 uA a 1MHz/2.2 V), sendo ideal para dispositivos alimentados por bateria. Eles possuem uma arquitetura RISC de 16 bits podendo trabalhar a uma frequência interna de até 16 MHz. 
 As principais caraterísticas dessa placa são:

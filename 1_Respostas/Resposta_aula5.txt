@@ -55,7 +55,7 @@ R3)
 R4)
 	mov.w #0, R15		;R15= i= 0
 	mov.w #100, R11		;R11= 100
-FOR:	comp R11, R15		
+FOR:	cmp R11, R15		
 	jeq EXIT		; Pula se i=100
 	inc.w R5		; i++
 	rla R15			; R15= 2i
@@ -69,7 +69,7 @@ EXIT:
 R5)	
 	mov.w #99, R15		;R15= i= 99
 	mov.w #0, R11		;R11= 0
-FOR:	comp R11, R15
+FOR:	cmp R11, R15
 	jeq EXIT		; Pula se i=0
 	dec.w R5		; i++
 	rla R15			; R15= 2i

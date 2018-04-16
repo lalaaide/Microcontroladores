@@ -189,3 +189,120 @@ Div1
 ERRO
 	mov.w #-1,R15	; Retorna -1 como Erro
 	ret
+5)
+a)
+#include <stdio.h>
+// Faz o resto da divisao
+int Restdivisao(int num, int div){
+    int i=0;
+    if (div!=0){
+        if (div!=1){
+            if(num>=div){
+                for (i;num>=div; i++){
+                    num-=div;
+                }
+                i= num;
+            }
+        }else
+        i=0;
+    }else
+        i=-1;
+
+    return i;
+}
+
+// Verifica se é primo, caso for retorna 1, caso contrário retorna 0.
+int primalidade(unsigned int num){
+    int p= num/2;
+    int i=2;
+    int verifica=0;
+        if (num!=0){
+            if (num>3){
+                for (i; i<=p; i++){
+                    verifica = Restdivisao(num,i);
+                    if (verifica==0){
+                        break;
+                    }
+                }
+                    if (verifica!=0){   // Se tiver resto, o numero é primo
+                        verifica =1;
+                    }
+
+            }else
+                verifica=1; //Se num for 1,2 ou 3
+        } else
+            verifica=0;    //Se num for 0
+    return verifica;
+}
+
+void main()
+{
+    int num;
+
+    printf("digite um numero para verificar se sua primalidade e verdadeira\n");
+    scanf("%d", &num);
+
+    int p=primalidade(num);
+    printf("P = %d \nSe P = 1 o numero e primo \nSe P = 0 o numero nao e primo \n", p);
+
+    return 0;
+}
+b)
+
+;--------------------------------Função Primalidade----------------------------------------
+Primalidade
+	mov.w R15,R11
+	rra R11			;p= num/2= R11
+	mov.w #2, R14		;i= R14
+	mov.w #0, R13		;verifica= R13
+	cmp #0,R15
+	jeq Rfalsa		;num=0, pula para resposta de 0 (Rfalsa)
+	cmp #4,R15		
+	jl RVerdadeira			;num<=3, pula para resposta de 1 a 3 (RVerdadeira)
+LoopPri
+	cmp R14, R11
+	jl VerificaPrimalidade	;p<i, pula para verifica primalidade (VerificaPrimalidade)
+	push.w R11		;Quardando o valor das variaveis p, i e num
+	push.w R14
+	push.w R15
+	call RestDivisao
+	mov.w R15, R13		;Verifica recebe o valor do resto de divisão
+	pop.w R15		;devolve o valor das variaveis p, i e num
+	pop.w R14
+	pop.w R11
+	cmp #0,R13
+	jeq VerificaPrimalidade
+	jmp LoopPri
+
+RPrimalidade	
+	cmp #0,R13
+	jne Rfalsa
+	
+RVerdadeira
+	mov.w #1,R15
+	ret	
+Rfalsa
+	mov.w #0,R15
+	ret
+;------------------------------Função Resto de Divisão--------------------------------------
+RestDivisao
+	mov.w #0,R11	;i=0
+	cmp #0,R14	;div por 0
+	jeq ERRO
+	cmp #1,R14	;div por 1
+	jeq Div1
+LoopDiv
+	cmp R14, R15
+	jl Rdiv		;a<b retorna 0
+	sub.w R14,R15	;a=a-b
+	inc R11		;i++
+	jmp LoopDiv
+	
+Rdiv
+	ret		; Retorna 'a' quando a<b
+Div1
+	mov.w #0,R15
+	ret		; Retorna '0', já que o resto de a/1 = '0'
+ERRO
+	mov.w #-1,R15	; Retorna -1 como Erro
+	ret

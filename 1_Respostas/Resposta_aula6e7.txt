@@ -272,6 +272,7 @@ LoopPri
 	pop.w R11
 	cmp #0,R13
 	jeq VerificaPrimalidade
+	inc R14			;i++
 	jmp LoopPri
 
 VerificaPrimalidade	

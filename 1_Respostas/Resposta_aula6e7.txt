@@ -274,7 +274,7 @@ LoopPri
 	jeq VerificaPrimalidade
 	jmp LoopPri
 
-RPrimalidade	
+VerificaPrimalidade	
 	cmp #0,R13
 	jne Rfalsa
 	

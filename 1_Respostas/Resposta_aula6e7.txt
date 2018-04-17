@@ -307,3 +307,31 @@ Div1
 ERRO
 	mov.w #-1,R15	; Retorna -1 como Erro
 	ret
+6)
+#include <stdio.h>
+// Faz o duplo fatorial
+unsigned long long DuploFatorial(unsigned long long n){
+   unsigned long long i = n;
+    if(n>1){
+        while(i>2){
+            i-=2;
+            n=n*i;
+        }
+    }else
+        n=1;
+
+    return n;
+}
+
+void main()
+{
+     unsigned long long num;
+
+    printf("digite um numero para o calculo do duplo fatorial\n");
+    scanf("%lld", &num);
+
+    num = DuploFatorial(num);
+    printf("num = %lld \n", num);
+
+    return 0;
+}

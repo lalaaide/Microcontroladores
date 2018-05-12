@@ -1,0 +1,50 @@
+1.Escreva uma função em C que faz o debounce de botões ligados à porta P1.
+
+2.Escreva um código em C que lê 9 botões multiplexados por 6 pinos, e pisca os LEDs da placa Launchpad de acordo com os botões. Por exemplo, se o primeiro botão é pressionado, os LEDs piscam uma vez; se o segundo botão é pressionado, os LEDs piscam duas vezes; e assim por diante. Se mais de um botão é pressionado, os LEDs não piscam
+
+RESPOSTAS
+
+Q1)
+#include <msp430.h> 
+#define botao BIT3
+#define leds (BIT0 + BIT6)
+
+void delay(volatile unsigned int i)
+{
+    while((i--)>0);
+}
+void debunce(int b){
+    int i;
+    int bn = 0;
+        bn &= ~b;
+    while(1){
+        P1OUT &= ~leds;
+        for(i=220; i>0; i--){
+            if((P1IN&b)==b){
+                break;
+            }
+        }
+        if (i==0){
+            break;
+        }
+    }
+}
+int main(void)
+{
+	WDTCTL = WDTPW | WDTHOLD;	// stop watchdog timer
+
+	P1DIR &= ~botao;
+	P1DIR |=leds;
+	P1OUT &= ~leds;
+	P1REN |= botao;
+	P1OUT |= botao;
+
+	while(1){
+	    if ((P1IN&botao)==0){
+	        debunce(botao);
+            P1OUT |= leds;
+            delay(0xffff);
+	    }else
+	        P1OUT &= ~leds;
+	}
+}

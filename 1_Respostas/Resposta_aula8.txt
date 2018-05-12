@@ -109,24 +109,17 @@ int main(void)
     }
 }
 Q5)
-//PERGUNTAR PARA O PROFESSOR
-#include <msp430.h> 
-#include <legacymsp430.h>       // Rodar paradas
+#include <msp430.h>
 #define Leds (BIT0 + BIT6)
 #define Botao BIT3
-
-void delay(volatile unsigned int i)
-{
-    while((i--)>0);
-}
 
 int main(void)
 {
 	WDTCTL = WDTPW | WDTHOLD;	// stop watchdog timer
-	
-	P1DIR |= Leds;              // Leds são saidas
-	P1DIR &= Botao;             // Botao é entrada
+
 	P1OUT &= ~Leds;             // Leds começam desligados
+	P1DIR |= Leds;              // Leds são saidas
+	P1DIR &= ~Botao;             // Botao é entrada
 	P1REN |= Botao;             // Habilita pull-up
 	P1OUT |= Botao;             // Inicia em Alto
 
@@ -136,10 +129,13 @@ int main(void)
 	_BIS_SR(GIE + LPM4_bits);
 
 }
-interrupt(PORT1_VECTOR) Interrupcao_P1(void)
+#pragma vector=PORT1_VECTOR
+__interrupt void Port_1(void)
 {
-    P1OUT &= ~LEDS;
-    while((P1IN&BTN)==0);
-    P1OUT |= LEDS;
-    P1IFG &= ~BTN;
+    while((P1IN&Botao)==0){
+        P1OUT |= Leds;
+    }
+    P1OUT &= ~Leds;
+    P1IFG &= ~Botao;
 }
+
